@@ -75,31 +75,31 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label19 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label20 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
+            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -580,86 +580,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "项目-桥梁";
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(35, 21);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(53, 12);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "项目名称";
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(94, 18);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(469, 21);
-            this.textBox13.TabIndex = 1;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(11, 55);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(77, 12);
-            this.label21.TabIndex = 2;
-            this.label21.Text = "关联合同编号";
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(95, 52);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(177, 21);
-            this.textBox14.TabIndex = 3;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(35, 93);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(53, 12);
-            this.label22.TabIndex = 4;
-            this.label22.Text = "关联桥梁";
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(95, 90);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(337, 21);
-            this.textBox15.TabIndex = 5;
-            // 
-            // textBox16
-            // 
-            this.textBox16.Location = new System.Drawing.Point(95, 127);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(100, 21);
-            this.textBox16.TabIndex = 6;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(18, 130);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(71, 12);
-            this.label23.TabIndex = 7;
-            this.label23.Text = "桥长（m）：";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(235, 130);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(47, 12);
-            this.label24.TabIndex = 8;
-            this.label24.Text = "label24";
-            // 
-            // textBox17
-            // 
-            this.textBox17.Location = new System.Drawing.Point(301, 126);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(100, 21);
-            this.textBox17.TabIndex = 9;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label29);
@@ -683,57 +603,74 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "检测类型";
             // 
-            // checkBox1
+            // label29
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(17, 33);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(96, 16);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "常规定期检测";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(17, 205);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(77, 12);
+            this.label29.TabIndex = 13;
+            this.label29.Text = "承载能力检算";
             // 
-            // checkBox2
+            // textBox19
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(17, 65);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(96, 16);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "结构定期检测";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.textBox19.Location = new System.Drawing.Point(387, 166);
+            this.textBox19.Name = "textBox19";
+            this.textBox19.Size = new System.Drawing.Size(105, 21);
+            this.textBox19.TabIndex = 12;
             // 
-            // checkBox3
+            // label28
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(17, 100);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(96, 16);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "静力荷载试验";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(328, 169);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(53, 12);
+            this.label28.TabIndex = 11;
+            this.label28.Text = "计算产值";
             // 
-            // checkBox4
+            // textBox18
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(17, 135);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(96, 16);
-            this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "动力荷载试验";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.textBox18.Location = new System.Drawing.Point(199, 166);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.Size = new System.Drawing.Size(111, 21);
+            this.textBox18.TabIndex = 10;
             // 
-            // checkBox5
+            // label27
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Checked = true;
-            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox5.Location = new System.Drawing.Point(140, 32);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(48, 16);
-            this.checkBox5.TabIndex = 4;
-            this.checkBox5.Text = "全桥";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(140, 169);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(53, 12);
+            this.label27.TabIndex = 9;
+            this.label27.Text = "标准产值";
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(17, 169);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(48, 16);
+            this.checkBox7.TabIndex = 8;
+            this.checkBox7.Text = "其它";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(140, 135);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(29, 12);
+            this.label26.TabIndex = 7;
+            this.label26.Text = "默认";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(140, 100);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(29, 12);
+            this.label25.TabIndex = 6;
+            this.label25.Text = "默认";
             // 
             // checkBox6
             // 
@@ -747,81 +684,144 @@
             this.checkBox6.Text = "全桥";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
-            // label25
+            // checkBox5
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(140, 100);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(29, 12);
-            this.label25.TabIndex = 6;
-            this.label25.Text = "默认";
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Checked = true;
+            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox5.Location = new System.Drawing.Point(140, 32);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(48, 16);
+            this.checkBox5.TabIndex = 4;
+            this.checkBox5.Text = "全桥";
+            this.checkBox5.UseVisualStyleBackColor = true;
             // 
-            // label26
+            // checkBox4
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(140, 135);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(29, 12);
-            this.label26.TabIndex = 7;
-            this.label26.Text = "默认";
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(17, 135);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(96, 16);
+            this.checkBox4.TabIndex = 3;
+            this.checkBox4.Text = "动力荷载试验";
+            this.checkBox4.UseVisualStyleBackColor = true;
             // 
-            // checkBox7
+            // checkBox3
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(17, 169);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(48, 16);
-            this.checkBox7.TabIndex = 8;
-            this.checkBox7.Text = "其它";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(17, 100);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(96, 16);
+            this.checkBox3.TabIndex = 2;
+            this.checkBox3.Text = "静力荷载试验";
+            this.checkBox3.UseVisualStyleBackColor = true;
             // 
-            // label27
+            // checkBox2
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(140, 169);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(53, 12);
-            this.label27.TabIndex = 9;
-            this.label27.Text = "标准产值";
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(17, 65);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(96, 16);
+            this.checkBox2.TabIndex = 1;
+            this.checkBox2.Text = "结构定期检测";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // textBox18
+            // checkBox1
             // 
-            this.textBox18.Location = new System.Drawing.Point(199, 166);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(111, 21);
-            this.textBox18.TabIndex = 10;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(17, 33);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(96, 16);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "常规定期检测";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // label28
+            // textBox17
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(328, 169);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(53, 12);
-            this.label28.TabIndex = 11;
-            this.label28.Text = "计算产值";
+            this.textBox17.Location = new System.Drawing.Point(301, 126);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(100, 21);
+            this.textBox17.TabIndex = 9;
             // 
-            // textBox19
+            // label24
             // 
-            this.textBox19.Location = new System.Drawing.Point(387, 166);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(105, 21);
-            this.textBox19.TabIndex = 12;
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(235, 130);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(47, 12);
+            this.label24.TabIndex = 8;
+            this.label24.Text = "label24";
             // 
-            // label29
+            // label23
             // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(17, 205);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(77, 12);
-            this.label29.TabIndex = 13;
-            this.label29.Text = "承载能力检算";
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(18, 130);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(71, 12);
+            this.label23.TabIndex = 7;
+            this.label23.Text = "桥长（m）：";
+            // 
+            // textBox16
+            // 
+            this.textBox16.Location = new System.Drawing.Point(95, 127);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(100, 21);
+            this.textBox16.TabIndex = 6;
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(95, 90);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(337, 21);
+            this.textBox15.TabIndex = 5;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(35, 93);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(53, 12);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "关联桥梁";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(95, 52);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(177, 21);
+            this.textBox14.TabIndex = 3;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(11, 55);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(77, 12);
+            this.label21.TabIndex = 2;
+            this.label21.Text = "关联合同编号";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(94, 18);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(469, 21);
+            this.textBox13.TabIndex = 1;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(35, 21);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(53, 12);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "项目名称";
             // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1108, 588);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "测试";
+            this.Text = "桥隧项目信息识别系统";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
