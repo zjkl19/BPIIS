@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPIIS", "WindowsFormsApp1\BPIIS.csproj", "{41F24C71-B3E8-43BB-9F88-1842B2E3E6A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPIIS", "BPIIS\BPIIS.csproj", "{41F24C71-B3E8-43BB-9F88-1842B2E3E6A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPIISTestProject", "WindowsFormsApp1TestProject\BPIISTestProject.csproj", "{F9668DCE-0222-4161-95B6-F6F1B7BF3BE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPIISTestProject", "BPIISTestProject\BPIISTestProject.csproj", "{F9668DCE-0222-4161-95B6-F6F1B7BF3BE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,8 +9,8 @@
     <ProjectGuid>{F9668DCE-0222-4161-95B6-F6F1B7BF3BE7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WindowsFormsApp1TestProject</RootNamespace>
-    <AssemblyName>WindowsFormsApp1TestProject</AssemblyName>
+    <RootNamespace>BPIISTestProject</RootNamespace>
+    <AssemblyName>BPIISTestProject</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -73,7 +73,7 @@
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WindowsFormsApp1\BPIIS.csproj">
+    <ProjectReference Include="..\BPIIS\BPIIS.csproj">
       <Project>{41f24c71-b3e8-43bb-9f88-1842b2e3e6a2}</Project>
       <Name>BPIIS</Name>
     </ProjectReference>
