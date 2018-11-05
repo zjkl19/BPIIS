@@ -12,6 +12,8 @@ using Aspose.Words;
 using Aspose.Words.Tables;
 using OfficeOpenXml;
 
+using System.Windows.Forms;
+
 //新代码
 using Ninject;
 
@@ -20,14 +22,161 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         IKernel kernel;
-        IRepository.IContractRepository contractRepository ;
+        IRepository.IContractRepository contractRepository;
+
+        BindingList<Employee> mEmployees = new BindingList<Employee>();
+        BindingSource mBbindingSource = new BindingSource();
+        private void dataGridView1_Load()
+        {
+            mEmployees.Add(new Employee("Tom", 23));
+            mEmployees.Add(new Employee("Harry", 24));
+            mEmployees.Add(new Employee("John", 26));
+            mBbindingSource.DataSource = mEmployees;
+            //dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AutoGenerateColumns = false;
+            AddColumns();
+            dataGridView1.DataSource = mBbindingSource;
+            dataGridView1.CellClick +=
+             new DataGridViewCellEventHandler(dataGridView1_CellClick);
+        }
+
+
+        private void AddColumns()
+        {
+
+
+
+            DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.Name = "Name";
+            nameColumn.DataPropertyName = "Name";
+
+
+
+            DataGridViewTextBoxColumn ageColumn = new DataGridViewTextBoxColumn();
+            ageColumn.Name = "Age";
+            ageColumn.DataPropertyName = "Age";
+
+
+            DataGridViewButtonColumn insertColumn =
+             new DataGridViewButtonColumn();
+            insertColumn.HeaderText = "";
+            insertColumn.Name = "insertColumn";
+            insertColumn.Text = "插入";
+            insertColumn.UseColumnTextForButtonValue = true;
+
+
+            DataGridViewButtonColumn deleteColumn =
+            new DataGridViewButtonColumn();
+            deleteColumn.HeaderText = "";
+            deleteColumn.Name = "deleteColumn";
+            deleteColumn.Text = "删除";
+            deleteColumn.UseColumnTextForButtonValue = true;
+
+
+            dataGridView1.Columns.Add(nameColumn);
+            dataGridView1.Columns.Add(ageColumn);
+            dataGridView1.Columns.Add(insertColumn);
+            dataGridView1.Columns.Add(deleteColumn);
+
+
+
+
+        }
+
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+            //增加空行
+            if (e.ColumnIndex == 2)
+            {
+                mEmployees.Insert(e.RowIndex, new Employee("", 0));
+            }
+
+            //删除当前行
+            if (e.ColumnIndex == 3)
+            {
+                mEmployees.RemoveAt(e.RowIndex);
+            }
+        }
+
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show(e.Exception.Message.ToString());
+
+        }
+
+
+        //对列1进行进一步验证
+        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                if (e.FormattedValue.ToString() == "123")
+                {
+                    MessageBox.Show("不能为123");
+                    e.Cancel = true;
+                    dataGridView1.CancelEdit();
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
+            }
+        }
+
+
+
+        public class Employee
+        {
+            public Employee(String name)
+            {
+                nameValue = name;
+            }
+            public Employee(String name, int age)
+            {
+                nameValue = name;
+                ageValue = age;
+            }
+
+
+            private String nameValue;
+            public String Name
+            {
+                get { return nameValue; }
+                set { nameValue = value; }
+            }
+
+
+            public Employee Self
+            {
+                get { return this; }
+            }
+
+
+            private int? ageValue;
+            public int? Age
+            {
+                get { return ageValue; }
+                set { ageValue = value; }
+            }
+
+
+
+
+        }
+
+
 
         public Form1()
         {
             InitializeComponent();
             kernel = new StandardKernel(new Infrastructure.NinjectDependencyResolver());
             contractRepository = kernel.Get<IRepository.IContractRepository>();
-
+            dataGridView1_Load();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -79,7 +228,7 @@ namespace WindowsFormsApp1
         {
             //IKernel kernel = new StandardKernel(new Infrastructure.NinjectDependencyResolver());
             //IRepository.IContractRepository contractRepository = kernel.Get<IRepository.IContractRepository>();
-           
+
             //TODO：增加匹配不到时的异常处理
             //打开word文档，fileName是路径地址，需要扩展名
             //string fileName = "合同--后屿路桥检测-褚工改.doc";
@@ -97,7 +246,7 @@ namespace WindowsFormsApp1
             wholeText = wholeText.Replace(")", "）");
 
             //合同编号
-            textBox12.Text= contractRepository.GetNo(wholeText);
+            textBox12.Text = contractRepository.GetNo(wholeText);
             //合同名称
             textBox1.Text = contractRepository.GetName(wholeText);
 
@@ -118,13 +267,13 @@ namespace WindowsFormsApp1
 
             //委托单位联系人
 
-            textBox5.Text = contractRepository.GetClientContactPerson(wholeText); 
+            textBox5.Text = contractRepository.GetClientContactPerson(wholeText);
 
             //委托单位联系人电话
 
             textBox7.Text = contractRepository.GetClientContactPersonPhone(wholeText);
 
-            textBox10.Text= contractRepository.GetDeadline(wholeText);
+            textBox10.Text = contractRepository.GetDeadline(wholeText);
 
             //MessageBox.Show(cbfbm);
         }
@@ -151,7 +300,7 @@ namespace WindowsFormsApp1
             catch (Exception)
             {
 
-                label19.Text="写入异常，请联系管理员";
+                label19.Text = "写入异常，请联系管理员";
             }
 
 
@@ -187,6 +336,14 @@ namespace WindowsFormsApp1
             label12.Text = listBox1.SelectedItems[0].ToString();
         }
 
+        private void textBox28_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
+
+
+
 }

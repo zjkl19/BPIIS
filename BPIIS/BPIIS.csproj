@@ -99,6 +99,7 @@
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="IRepository\IContractRepository.cs" />
     <Compile Include="IRepository\IFileRepository.cs" />
+    <Compile Include="Model\Employee.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ContractRepository.cs" />
@@ -143,7 +144,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="项目\a.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
