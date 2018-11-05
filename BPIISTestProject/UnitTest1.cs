@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WindowsFormsApp1.Repository;
+using BPIIS.Repository;
 
 namespace WindowsFormsApp1TestProject
 {

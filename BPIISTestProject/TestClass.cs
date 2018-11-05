@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsFormsApp1.Repository;
+using BPIIS.Repository;
 using Xunit;
 
 namespace WindowsFormsApp1TestProject

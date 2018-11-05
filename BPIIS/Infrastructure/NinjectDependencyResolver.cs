@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WindowsFormsApp1.IRepository;
-using WindowsFormsApp1.Repository;
+using BPIIS.IRepository;
+using BPIIS.Repository;
 
-namespace WindowsFormsApp1.Infrastructure
+namespace BPIIS.Infrastructure
 {
     public class NinjectDependencyResolver : Ninject.Modules.NinjectModule
     {
         public override void Load()
         {
             Bind<IContractRepository>().To<ContractRepository>();
-
+            Bind<IProjectRepository>().To<ProjectRepository>();
         }
     }
 }

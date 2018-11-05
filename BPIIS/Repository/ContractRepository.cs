@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using WindowsFormsApp1.IRepository;
+using BPIIS.IRepository;
 
-namespace WindowsFormsApp1.Repository
+namespace BPIIS.Repository
 {
     public class ContractRepository : IContractRepository
     {
@@ -225,7 +225,6 @@ namespace WindowsFormsApp1.Repository
                 Match = regex.Matches(wholeText);
                 result = Match[0].Value;
                 result = SpecialStrReplaceAndTrim(result);
-
             }
             catch (Exception)
             {

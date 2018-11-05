@@ -16,71 +16,88 @@ using System.Windows.Forms;
 
 //新代码
 using Ninject;
+using BPIIS.IRepository;
 
-namespace WindowsFormsApp1
+namespace BPIIS
 {
     public partial class Form1 : Form
     {
         IKernel kernel;
-        IRepository.IContractRepository contractRepository;
+        IContractRepository contractRepository;
+        IProjectRepository projectRepository;
 
-        BindingList<Employee> mEmployees = new BindingList<Employee>();
+        BindingList<BridgeInspection> myGridView = new BindingList<BridgeInspection>();
         BindingSource mBbindingSource = new BindingSource();
+
         private void dataGridView1_Load()
         {
-            mEmployees.Add(new Employee("Tom", 23));
-            mEmployees.Add(new Employee("Harry", 24));
-            mEmployees.Add(new Employee("John", 26));
-            mBbindingSource.DataSource = mEmployees;
-            //dataGridView1.Dock = DockStyle.Fill;
+            //myGridView.Add(new BridgeInspection("栏杆推力", 30000,750));
+            myGridView.Add(new BridgeInspection("", 0, 0));
+            
+            mBbindingSource.DataSource = myGridView;
+            //dataGridView1.Dock = DockStyle.Fill;    //挤满
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.AutoGenerateColumns = false;
             AddColumns();
+            //AddColumns();
+
             dataGridView1.DataSource = mBbindingSource;
             dataGridView1.CellClick +=
              new DataGridViewCellEventHandler(dataGridView1_CellClick);
         }
 
+        //添加新的自定义检测类型
+        private void button8_Click(object sender, EventArgs e)
+        {
+            myGridView.Add(new BridgeInspection("", 0, 0));
+        }
 
         private void AddColumns()
         {
 
+            //“检测类型”在数据库中为“备注”字段
+            DataGridViewTextBoxColumn commentColumn = new DataGridViewTextBoxColumn
+            {
+                Name = "检测类型",
+                DataPropertyName = "Comment"
+            };
 
+            DataGridViewTextBoxColumn stdValueColumn = new DataGridViewTextBoxColumn
+            {
+                Name = "标准产值",
+                DataPropertyName = "stdValue"
+            };
 
-            DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
-            nameColumn.Name = "Name";
-            nameColumn.DataPropertyName = "Name";
-
-
-
-            DataGridViewTextBoxColumn ageColumn = new DataGridViewTextBoxColumn();
-            ageColumn.Name = "Age";
-            ageColumn.DataPropertyName = "Age";
-
+            DataGridViewTextBoxColumn calcValueColumn = new DataGridViewTextBoxColumn
+            {
+                Name = "计算产值",
+                DataPropertyName = "calcValue"
+            };
 
             DataGridViewButtonColumn insertColumn =
-             new DataGridViewButtonColumn();
-            insertColumn.HeaderText = "";
-            insertColumn.Name = "insertColumn";
-            insertColumn.Text = "插入";
-            insertColumn.UseColumnTextForButtonValue = true;
+             new DataGridViewButtonColumn
+             {
+                 HeaderText = "",
+                 Name = "insertColumn",
+                 Text = "插入",
+                 UseColumnTextForButtonValue = true
+             };
 
 
             DataGridViewButtonColumn deleteColumn =
-            new DataGridViewButtonColumn();
-            deleteColumn.HeaderText = "";
-            deleteColumn.Name = "deleteColumn";
-            deleteColumn.Text = "删除";
-            deleteColumn.UseColumnTextForButtonValue = true;
+            new DataGridViewButtonColumn
+            {
+                HeaderText = "",
+                Name = "deleteColumn",
+                Text = "删除",
+                UseColumnTextForButtonValue = true
+            };
 
-
-            dataGridView1.Columns.Add(nameColumn);
-            dataGridView1.Columns.Add(ageColumn);
+            dataGridView1.Columns.Add(commentColumn);
+            dataGridView1.Columns.Add(stdValueColumn);
+            dataGridView1.Columns.Add(calcValueColumn);
             dataGridView1.Columns.Add(insertColumn);
             dataGridView1.Columns.Add(deleteColumn);
-
-
-
 
         }
 
@@ -90,15 +107,15 @@ namespace WindowsFormsApp1
 
 
             //增加空行
-            if (e.ColumnIndex == 2)
+            if (e.ColumnIndex == 3)
             {
-                mEmployees.Insert(e.RowIndex, new Employee("", 0));
+                myGridView.Insert(e.RowIndex, new BridgeInspection("", 0,0));
             }
 
             //删除当前行
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == 4)
             {
-                mEmployees.RemoveAt(e.RowIndex);
+               myGridView.RemoveAt(e.RowIndex);
             }
         }
 
@@ -130,39 +147,21 @@ namespace WindowsFormsApp1
 
 
 
-        public class Employee
+        public class BridgeInspection
         {
-            public Employee(String name)
-            {
-                nameValue = name;
-            }
-            public Employee(String name, int age)
-            {
-                nameValue = name;
-                ageValue = age;
-            }
+            public string Comment { get; set; }
 
+            public decimal StdValue { get; set; }
 
-            private String nameValue;
-            public String Name
+            public decimal CalcValue { get; set; }
+
+            public BridgeInspection(string comment,decimal stdValue,decimal calcValue)
             {
-                get { return nameValue; }
-                set { nameValue = value; }
+                Comment = comment;
+                StdValue = stdValue;
+                CalcValue = calcValue;
             }
 
-
-            public Employee Self
-            {
-                get { return this; }
-            }
-
-
-            private int? ageValue;
-            public int? Age
-            {
-                get { return ageValue; }
-                set { ageValue = value; }
-            }
 
 
 
@@ -175,7 +174,8 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             kernel = new StandardKernel(new Infrastructure.NinjectDependencyResolver());
-            contractRepository = kernel.Get<IRepository.IContractRepository>();
+            contractRepository = kernel.Get<IContractRepository>();
+            projectRepository = kernel.Get<IProjectRepository>();
             dataGridView1_Load();
         }
 
@@ -223,7 +223,7 @@ namespace WindowsFormsApp1
 
         }
 
-
+        //智能读取合同
         private void button3_Click(object sender, EventArgs e)
         {
             //IKernel kernel = new StandardKernel(new Infrastructure.NinjectDependencyResolver());
@@ -307,6 +307,21 @@ namespace WindowsFormsApp1
 
         }
 
+        //读取所有项目word文件
+        private void button5_Click(object sender, EventArgs e)
+        {
+            listBox2.Items.Clear();
+
+            string rootPath = Directory.GetCurrentDirectory();
+
+            DirectoryInfo folder = new DirectoryInfo($"{rootPath}\\项目");
+
+            foreach (FileInfo file in folder.GetFiles("*.doc"))
+            {
+                listBox2.Items.Add(file.Name);
+            }
+        }
+
         //读取所有合同word文件
         private void button4_Click(object sender, EventArgs e)
         {
@@ -331,13 +346,43 @@ namespace WindowsFormsApp1
 
         }
 
+        //同步合同文件
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             label12.Text = listBox1.SelectedItems[0].ToString();
         }
+        //同步项目文件
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label29.Text = listBox2.SelectedItems[0].ToString();
+        }
 
         private void textBox28_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        //识别项目信息
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string rootPath = Directory.GetCurrentDirectory();
+            string fileName = listBox2.SelectedItems[0].ToString();    //多选只算第一个
+            
+            Document doc = new Document($"{rootPath}\\项目\\{fileName}");
+                  
+            textBox13.Text = projectRepository.GetName(doc);
+
+            textBox14.Text = projectRepository.GetContractNo(doc);
+
+            textBox15.Text = projectRepository.GetBridgeName(doc);
+
+            checkBox1.Checked = projectRepository.IsExistRegularPeriod(doc);
+
+            checkBox2.Checked = projectRepository.IsExistStructurePeriod(doc);
+
+            checkBox3.Checked = projectRepository.IsExistStaticLoad(doc);
+
+            checkBox4.Checked = projectRepository.IsExistDynamicLoad(doc);
 
         }
 

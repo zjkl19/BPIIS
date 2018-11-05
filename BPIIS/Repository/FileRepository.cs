@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WindowsFormsApp1.IRepository;
+using BPIIS.IRepository;
 
-namespace WindowsFormsApp1.Repository
+namespace BPIIS.Repository
 {
     public class FileRepository:IFileRepository
     {
