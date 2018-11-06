@@ -22,5 +22,9 @@ namespace BPIIS.IRepository
         bool IsExistStaticLoad(Document doc);
 
         bool IsExistDynamicLoad(Document doc);
+
+        bool IsExistBearingCapacity(Document doc);
+
+        bool IsExistRailThrusting(Document doc);
     }
 }

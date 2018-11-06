@@ -137,7 +137,7 @@ namespace BPIIS.Repository
 
             bool existsResult = false;
 
-            regex = new Regex(@"[静动载试验|静力荷载试验|静载试验]");
+            regex = new Regex(@"静动载试验|静力荷载试验|静载试验");
             try
             {
                 Match = regex.Matches(originalWholeText);
@@ -166,7 +166,7 @@ namespace BPIIS.Repository
 
             bool existsResult = false;
 
-            regex = new Regex(@"[静动载试验|自振特性试验|自振特性]");
+            regex = new Regex(@"静动载试验|自振特性试验|自振特性");
             try
             {
                 Match = regex.Matches(originalWholeText);
@@ -188,6 +188,63 @@ namespace BPIIS.Repository
 
             return existsResult;
         }
+
+        public bool IsExistBearingCapacity(Document doc)
+        {
+            string originalWholeText = doc.Range.Text;    //原始全文
+
+            bool existsResult = false;
+
+            regex = new Regex(@"承载能力检算");
+            try
+            {
+                Match = regex.Matches(originalWholeText);
+
+                result = Match[0].Value;
+
+                result = SpecialStrReplaceAndTrim(result);
+
+            }
+            catch (Exception)
+            {
+                result = "未找到";
+            }
+
+            if (result != "未找到")
+            {
+                existsResult = true;
+            }
+
+            return existsResult;
+        }
+
+        public bool IsExistRailThrusting(Document doc)
+        {
+            string originalWholeText = doc.Range.Text;    //原始全文
+
+            bool existsResult = false;
+
+            regex = new Regex(@"栏杆推力|栏杆水平推力");
+            try
+            {
+                Match = regex.Matches(originalWholeText);
+                result = Match[0].Value;
+                result = SpecialStrReplaceAndTrim(result);
+
+            }
+            catch (Exception)
+            {
+                result = "未找到";
+            }
+
+            if (result != "未找到")
+            {
+                existsResult = true;
+            }
+
+            return existsResult;
+        }
+
         private string SpecialStrReplace(string strIn)
         {
             string strOut = null;

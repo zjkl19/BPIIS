@@ -32,8 +32,9 @@ namespace BPIIS
         private void dataGridView1_Load()
         {
             //myGridView.Add(new BridgeInspection("栏杆推力", 30000,750));
-            myGridView.Add(new BridgeInspection("", 0, 0));
-            
+
+            //myGridView.Add(new BridgeInspection("", 0, 0));
+
             mBbindingSource.DataSource = myGridView;
             //dataGridView1.Dock = DockStyle.Fill;    //挤满
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -109,13 +110,13 @@ namespace BPIIS
             //增加空行
             if (e.ColumnIndex == 3)
             {
-                myGridView.Insert(e.RowIndex, new BridgeInspection("", 0,0));
+                myGridView.Insert(e.RowIndex, new BridgeInspection("", 0, 0));
             }
 
             //删除当前行
             if (e.ColumnIndex == 4)
             {
-               myGridView.RemoveAt(e.RowIndex);
+                myGridView.RemoveAt(e.RowIndex);
             }
         }
 
@@ -155,7 +156,7 @@ namespace BPIIS
 
             public decimal CalcValue { get; set; }
 
-            public BridgeInspection(string comment,decimal stdValue,decimal calcValue)
+            public BridgeInspection(string comment, decimal stdValue, decimal calcValue)
             {
                 Comment = comment;
                 StdValue = stdValue;
@@ -278,7 +279,7 @@ namespace BPIIS
             //MessageBox.Show(cbfbm);
         }
 
-
+        //将项目信息写入excel
         private void button2_Click_1(object sender, EventArgs e)
         {
             string source = @"桥隧项目管理系统导入模板-空白.xlsx";
@@ -287,19 +288,105 @@ namespace BPIIS
             try
             {
                 FileInfo sourceFile = new FileInfo(source);
-                FileInfo destinationFile = sourceFile.CopyTo(destination, true);
+                FileInfo destinationFile = null;
+                if (!File.Exists(destination))    //不存在则复制
+                {
+                    destinationFile = sourceFile.CopyTo(destination, true);
+                }
+                else    //存在则直接打开
+                {
+                    destinationFile = new FileInfo(destination);
+                }
+                
 
                 using (ExcelPackage package = new ExcelPackage(destinationFile))
                 {
                     ExcelWorksheet worksheet = package.Workbook.Worksheets["合同"];
                     //worksheet.Cells["A1"].Value = "名称";//直接指定单元格进行赋值
-                    worksheet.Cells[2, 3].Value = textBox1.Text;//直接指定行列数进行赋值
+
+                    //以追加方式写入
+
+                    int rowIndex = 2;   //写入行
+
+                    //首行：表头不导入
+                    bool rowCur = true;    //行游标指示器
+                                           //rowCur=false表示到达行尾
+                    while (rowCur)
+                    {
+                        try
+                        {
+                            //跳过表头
+                            if (string.IsNullOrEmpty(worksheet.Cells[rowIndex, 1].Value.ToString()))
+                            {
+                                rowCur = false;
+                            }
+                        }
+                        catch (Exception)   //读取异常则终止
+                        {
+                            rowCur = false;
+                        }
+
+                        if (rowCur)
+                        {
+                            rowIndex++;
+                        }
+                    }
+
+                    //写入excel
+                    worksheet.Cells[rowIndex, 1].Value = (rowIndex-1).ToString();    //序号
+                    worksheet.Cells[rowIndex, 2].Value = textBox12.Text;    //合同编号
+                    worksheet.Cells[rowIndex, 3].Value = textBox1.Text;    //合同名称
+                    worksheet.Cells[rowIndex, 4].Value = textBox8.Text;    //合同金额
+                    worksheet.Cells[rowIndex, 5].Value = textBox2.Text;    //合同签订日期
+                    worksheet.Cells[rowIndex, 6].Value = textBox10.Text;    //合同期限
+                    worksheet.Cells[rowIndex, 7].Value = textBox6.Text;    //合同约定工作内容
+                    worksheet.Cells[rowIndex, 8].Value = textBox3.Text;    //项目地点
+                    worksheet.Cells[rowIndex, 9].Value = textBox4.Text;    //委托单位
+                    worksheet.Cells[rowIndex, 10].Value = textBox5.Text;    //委托单位联系人
+                    worksheet.Cells[rowIndex, 11].Value = textBox7.Text;    //委托单位联系人电话
+                    //承接方式
+                    if(radioButton1.Checked)
+                    {
+                        worksheet.Cells[rowIndex, 12].Value = 1;
+                    }
+                    else if(radioButton2.Checked)
+                    {
+                        worksheet.Cells[rowIndex, 12].Value = 2;
+                    }
+                    else if (radioButton3.Checked)
+                    {
+                        worksheet.Cells[rowIndex, 12].Value = 3;
+                    }
+                    else if (radioButton4.Checked)
+                    {
+                        worksheet.Cells[rowIndex, 12].Value = 4;
+                    }
+                    //合同签订状态
+                    if (radioButton5.Checked)
+                    {
+                        worksheet.Cells[rowIndex, 13].Value = 1;
+                    }
+                    else if (radioButton6.Checked)
+                    {
+                        worksheet.Cells[rowIndex, 13].Value = 2;
+                    }
+                    else if (radioButton7.Checked)
+                    {
+                        worksheet.Cells[rowIndex, 13].Value = 3;
+                    }
+                    else if (radioButton8.Checked)
+                    {
+                        worksheet.Cells[rowIndex, 13].Value = 4;
+                    }
+                    //合同承接人工号
+                    worksheet.Cells[rowIndex, 14].Value = textBox11.Text;    //委托单位联系人电话
+
                     package.Save();
                 }
+                label19.Text = "成功写入！";
             }
             catch (Exception)
             {
-
                 label19.Text = "写入异常，请联系管理员";
             }
 
@@ -346,20 +433,33 @@ namespace BPIIS
 
         }
 
-        //同步合同文件
+        //同步合同文件名
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label12.Text = listBox1.SelectedItems[0].ToString();
+            try
+            {
+                label12.Text = listBox1.SelectedItems[0].ToString();
+            }
+            catch (Exception)
+            {
+
+                label12.Text = "无";
+            }
+            
         }
-        //同步项目文件
+        //同步项目文件名
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            label29.Text = listBox2.SelectedItems[0].ToString();
-        }
+            try
+            {
+                label29.Text = listBox2.SelectedItems[0].ToString();
+            }
+            catch (Exception)
+            {
 
-        private void textBox28_TextChanged(object sender, EventArgs e)
-        {
-
+                label29.Text = "无";
+            }
+            
         }
 
         //识别项目信息
@@ -367,9 +467,9 @@ namespace BPIIS
         {
             string rootPath = Directory.GetCurrentDirectory();
             string fileName = listBox2.SelectedItems[0].ToString();    //多选只算第一个
-            
+
             Document doc = new Document($"{rootPath}\\项目\\{fileName}");
-                  
+
             textBox13.Text = projectRepository.GetName(doc);
 
             textBox14.Text = projectRepository.GetContractNo(doc);
@@ -384,6 +484,306 @@ namespace BPIIS
 
             checkBox4.Checked = projectRepository.IsExistDynamicLoad(doc);
 
+            checkBox5.Checked = projectRepository.IsExistBearingCapacity(doc);
+
+            //栏杆水平推力
+            if(projectRepository.IsExistRailThrusting(doc))
+            {
+                checkBox6.Checked = true;
+                myGridView.Add(new BridgeInspection("栏杆推力", 0, 0));
+            }
+            
+        }
+
+        //设置检测类型字符串
+        private string SetInspectionString()
+        {
+            List<string> stringList = new List<string>();
+            string inspString = "";    //最终结果
+            string tempString = "";
+
+            //常规定期检测
+            if(checkBox1.Checked)
+            {
+                tempString = "常规定期检测";
+                if(!checkBox7.Checked)
+                {
+                    tempString = $"{tempString},{textBox23.Text},{textBox24.Text}";
+                }
+                stringList.Add(tempString);
+            }
+
+            //结构定期检测
+            if (checkBox2.Checked)
+            {
+                tempString = "结构定期检测";
+                if (!checkBox8.Checked)
+                {
+                    tempString = $"{tempString},{textBox25.Text},{textBox26.Text}";
+                }
+                stringList.Add(tempString);
+            }
+
+            //静力荷载试验
+            if (checkBox3.Checked)
+            {
+                tempString = "静力荷载试验";
+                if (Convert.ToInt32(textBox21.Text)>1)
+                {
+                    tempString = $"{tempString},{textBox21.Text}";
+                }
+                stringList.Add(tempString);
+            }
+
+            //动力荷载试验
+            if (checkBox4.Checked)
+            {
+                tempString = "动力荷载试验";
+                if (Convert.ToInt32(textBox22.Text) > 1)
+                {
+                    tempString = $"{tempString},{textBox22.Text}";
+                }
+                stringList.Add(tempString);
+            }
+
+            //承载能力检算(不含基础)
+            if (checkBox5.Checked)
+            {
+                tempString = "承载能力检算(不含基础)";
+                stringList.Add(tempString);
+            }
+
+            //其它
+            if(checkBox6.Checked)
+            {
+                tempString = "";
+                for (int i = 0; i < dataGridView1.RowCount; i++)
+                {
+                    tempString = $"{tempString}{dataGridView1.Rows[i].Cells[0].Value.ToString()},{dataGridView1.Rows[i].Cells[1].Value.ToString()},{dataGridView1.Rows[i].Cells[2].Value.ToString()}";              
+                    //不是最后一行
+                    if (i!= dataGridView1.RowCount-1)
+                    {
+                        tempString = $"{tempString};";
+                    }    
+                }
+                stringList.Add(tempString);
+            }
+
+            inspString = "";
+            for (int i=0;i<stringList.Count;i++)
+            {
+                inspString = $"{inspString}{stringList[i]}";
+                if(i!=stringList.Count-1)
+                {
+                    inspString = $"{inspString};";
+                }
+            }
+
+            return inspString;
+
+        }
+
+        //生成检测字符串
+        private void button9_Click(object sender, EventArgs e)
+        {
+            textBox18.Text = SetInspectionString();
+        }
+
+        //常规定检
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
+            //常规定检检测全桥则检测参数无效
+            if(checkBox7.Checked)
+            {
+                textBox23.Enabled = false;
+                textBox24.Enabled = false;
+                textBox23.Text = "";
+                textBox24.Text = "";
+            }
+            else
+            {
+                textBox23.Enabled = true;
+                textBox24.Enabled = true;
+
+            }
+        }
+
+        //结构定检
+        private void checkBox8_CheckedChanged(object sender, EventArgs e)
+        {
+            //结构定检检测全桥则检测参数无效
+            if (checkBox8.Checked)
+            {
+                textBox25.Enabled = false;
+                textBox26.Enabled = false;
+                textBox25.Text = "";
+                textBox26.Text = "";
+            }
+            else
+            {
+                textBox25.Enabled = true;
+                textBox26.Enabled = true;
+            }
+        }
+
+
+        //桥梁写入excel
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string source = @"桥隧项目管理系统导入模板-空白.xlsx";
+            string destination = @"桥隧项目管理系统导入模板-导出.xlsx";
+
+            try
+            {
+                FileInfo sourceFile = new FileInfo(source);
+                FileInfo destinationFile = null;
+                if (!File.Exists(destination))    //不存在则复制
+                {
+                    destinationFile = sourceFile.CopyTo(destination, true);
+                }
+                else    //存在则直接打开
+                {
+                    destinationFile = new FileInfo(destination);
+                }
+
+
+                using (ExcelPackage package = new ExcelPackage(destinationFile))
+                {
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets["桥梁"];
+
+                    //以追加方式写入
+                    int rowIndex = 2;   //写入行
+
+                    //首行：表头不导入
+                    bool rowCur = true;    //行游标指示器
+                                           //rowCur=false表示到达行尾
+                    while (rowCur)
+                    {
+                        try
+                        {
+                            //跳过表头
+                            if (string.IsNullOrEmpty(worksheet.Cells[rowIndex, 1].Value.ToString()))
+                            {
+                                rowCur = false;
+                            }
+                        }
+                        catch (Exception)   //读取异常则终止
+                        {
+                            rowCur = false;
+                        }
+
+                        if (rowCur)
+                        {
+                            rowIndex++;
+                        }
+                    }
+
+                    //写入excel
+                    //桥梁名称	桥梁地理位置	桥梁长度	桥梁宽度	桥梁跨数	桥梁结构形式	备注
+                    worksheet.Cells[rowIndex, 1].Value = (rowIndex - 1).ToString();    //序号
+                    worksheet.Cells[rowIndex, 2].Value = textBox15.Text;    //桥梁名称
+                    worksheet.Cells[rowIndex, 3].Value = textBox27.Text;    //地理位置
+                    worksheet.Cells[rowIndex, 4].Value = textBox16.Text;    //桥长
+                    worksheet.Cells[rowIndex, 5].Value = textBox17.Text;    //桥宽
+                    worksheet.Cells[rowIndex, 6].Value = textBox20.Text;    //跨/联数
+                    worksheet.Cells[rowIndex, 7].Value = (comboBox1.SelectedIndex + 1).ToString();    //结构形式
+                    worksheet.Cells[rowIndex, 8].Value = textBox19.Text+(String.IsNullOrEmpty(textBox9.Text)?"":" 最大跨径："+textBox9.Text);     //备注
+
+                    package.Save();
+                }
+
+                label41.Text = "成功写入！";
+            }
+            catch (Exception)
+            {
+                label41.Text = "写入异常，请联系管理员";
+            }
+        }
+        //项目写入excel
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string source = @"桥隧项目管理系统导入模板-空白.xlsx";
+            string destination = @"桥隧项目管理系统导入模板-导出.xlsx";
+
+            try
+            {
+                FileInfo sourceFile = new FileInfo(source);
+                FileInfo destinationFile = null;
+                if (!File.Exists(destination))    //不存在则复制
+                {
+                    destinationFile = sourceFile.CopyTo(destination, true);
+                }
+                else    //存在则直接打开
+                {
+                    destinationFile = new FileInfo(destination);
+                }
+
+
+                using (ExcelPackage package = new ExcelPackage(destinationFile))
+                {
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets["项目"];
+
+                    //以追加方式写入
+                    int rowIndex = 2;   //写入行
+
+                    //首行：表头不导入
+                    bool rowCur = true;    //行游标指示器
+                                           //rowCur=false表示到达行尾
+                    while (rowCur)
+                    {
+                        try
+                        {
+                            //跳过表头
+                            if (string.IsNullOrEmpty(worksheet.Cells[rowIndex, 1].Value.ToString()))
+                            {
+                                rowCur = false;
+                            }
+                        }
+                        catch (Exception)   //读取异常则终止
+                        {
+                            rowCur = false;
+                        }
+
+                        if (rowCur)
+                        {
+                            rowIndex++;
+                        }
+                    }
+
+                    //写入excel
+                    worksheet.Cells[rowIndex, 1].Value = (rowIndex - 1).ToString();    //序号
+                    worksheet.Cells[rowIndex, 2].Value = textBox14.Text;    //关联合同编号
+                    worksheet.Cells[rowIndex, 3].Value = textBox13.Text;    //项目名称
+                    worksheet.Cells[rowIndex, 4].Value = textBox15.Text;    //关联桥梁
+                    worksheet.Cells[rowIndex, 5].Value = textBox18.Text;    //检测类型
+
+                    package.Save();
+                }
+
+                label40.Text = "成功写入！";
+            }
+            catch (Exception)
+            {
+                label40.Text = "写入异常，请联系管理员";
+            }
+        }
+
+        //"跨/联"跟收费标准同步（福建省城市桥梁检测评估费用定额）
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBox1.SelectedItem.ToString().Contains("连续梁桥")
+                || comboBox1.SelectedItem.ToString().Contains("连续刚构桥"))
+            {
+                label30.Text = "联数";
+                label25.Text = "联";
+                label26.Text = "联";
+            }
+            else
+            {
+                label30.Text = "跨数";
+                label25.Text = "跨";
+                label26.Text = "跨";
+            }
         }
 
 
