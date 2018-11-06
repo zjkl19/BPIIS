@@ -133,6 +133,10 @@
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
             this.textBox27 = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -528,6 +532,9 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPage1.Controls.Add(this.label48);
+            this.tabPage1.Controls.Add(this.label47);
+            this.tabPage1.Controls.Add(this.label45);
             this.tabPage1.Controls.Add(this.label39);
             this.tabPage1.Controls.Add(this.label38);
             this.tabPage1.Controls.Add(this.label19);
@@ -601,6 +608,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPage2.Controls.Add(this.label46);
             this.tabPage2.Controls.Add(this.textBox27);
             this.tabPage2.Controls.Add(this.label44);
             this.tabPage2.Controls.Add(this.textBox19);
@@ -1190,6 +1198,45 @@
             this.textBox27.Size = new System.Drawing.Size(127, 21);
             this.textBox27.TabIndex = 26;
             // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label45.Location = new System.Drawing.Point(745, 391);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(240, 96);
+            this.label45.TabIndex = 41;
+            this.label45.Text = "使用说明：\r\n1、点击\"读取所有合同word文件\"\r\n2、选择合同文件\r\n3、点击\"智能读取word\"\r\n4、修改识别不准确的结果\r\n5、点击\"写入excel\"";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label46.Location = new System.Drawing.Point(693, 380);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(240, 144);
+            this.label46.TabIndex = 42;
+            this.label46.Text = "使用说明：\r\n1、点击\"读取所有报告word文件\"\r\n2、选择报告文件\r\n3、点击\"智能读取word\"\r\n4、修改识别不准确的结果\r\n5、添加其它不能识别的信息\r" +
+    "\n6、点击\"生成检测类型字符串\"\r\n7、点击\"桥梁信息写入excel\"\r\n8、点击\"项目信息写入excel\"";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(292, 313);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(59, 12);
+            this.label47.TabIndex = 42;
+            this.label47.Text = "无则填写/";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(243, 282);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(59, 12);
+            this.label48.TabIndex = 43;
+            this.label48.Text = "无则填写/";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1108, 701);
@@ -1324,6 +1371,10 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.TextBox textBox27;
         private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label47;
     }
 }
 
