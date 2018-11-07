@@ -382,8 +382,9 @@ namespace BPIIS
                     worksheet.Cells[rowIndex, 14].Value = textBox11.Text;    //委托单位联系人电话
 
                     package.Save();
+                    label19.Text = $"成功写入！当前已写入{rowIndex - 1}行";
                 }
-                label19.Text = "成功写入！";
+              
             }
             catch (Exception)
             {
@@ -690,9 +691,9 @@ namespace BPIIS
                     worksheet.Cells[rowIndex, 8].Value = textBox19.Text+(String.IsNullOrEmpty(textBox9.Text)?"":" 最大跨径："+textBox9.Text);     //备注
 
                     package.Save();
+                    label41.Text = $"成功写入！当前已写入{rowIndex - 1}行";
                 }
-
-                label41.Text = "成功写入！";
+                
             }
             catch (Exception)
             {
@@ -755,12 +756,12 @@ namespace BPIIS
                     worksheet.Cells[rowIndex, 2].Value = textBox14.Text;    //关联合同编号
                     worksheet.Cells[rowIndex, 3].Value = textBox13.Text;    //项目名称
                     worksheet.Cells[rowIndex, 4].Value = textBox15.Text;    //关联桥梁
-                    worksheet.Cells[rowIndex, 5].Value = textBox18.Text;    //检测类型
+                    worksheet.Cells[rowIndex, 5].Value = SetInspectionString();//textBox18.Text;    //检测类型
 
                     package.Save();
+                    label40.Text = $"成功写入！当前已写入{rowIndex - 1}行";
                 }
-
-                label40.Text = "成功写入！";
+                
             }
             catch (Exception)
             {
