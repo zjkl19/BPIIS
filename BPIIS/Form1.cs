@@ -14,6 +14,8 @@ using OfficeOpenXml;
 
 using System.Windows.Forms;
 
+using System.Net;
+
 //新代码
 using Ninject;
 using BPIIS.IRepository;
@@ -787,7 +789,51 @@ namespace BPIIS
             }
         }
 
+        //检查更新
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WebClient MyWebClient = new WebClient();
+                MyWebClient.Credentials = CredentialCache.DefaultCredentials;//获取或设置用于向Internet资源的请求进行身份验证的网络凭据
 
+                //软件版本信息
+                Byte[] pageData = MyWebClient.DownloadData("http://192.168.12.11:8300/BPIISUpdate.txt"); //从指定网站下载数据
+
+                string pageHtml = Encoding.Default.GetString(pageData);  //如果获取网站页面采用的是GB2312，则使用这句            
+
+                //string pageHtml = Encoding.UTF8.GetString(pageData); //如果获取网站页面采用的是UTF-8，则使用这句
+
+                Byte[] ipPageData = MyWebClient.DownloadData("http://ip.tool.chinaz.com/");
+                string ipPageHtml = Encoding.UTF8.GetString(ipPageData);
+
+                var result = string.Empty;
+                var regex = new Regex(@"(?<=<dd class=""fz24"">)([\s\S]+?)(?=</dd>)");
+                try
+                {
+                    var Match = regex.Matches(ipPageHtml);
+                    result = Match[0].Value;
+
+                }
+                catch (Exception)
+                {
+                    result = "未找到";
+                }
+
+                MessageBox.Show(result);
+
+                //写入文本测试
+                //using (StreamWriter sw = new StreamWriter("c:\\test\\ouput.html"))//将获取的内容写入文本
+                //{
+                //    sw.Write(pageHtml);
+                //}
+
+            }
+            catch (WebException webEx)
+            {
+                MessageBox.Show(webEx.Message.ToString());
+            }
+        }
     }
 
 

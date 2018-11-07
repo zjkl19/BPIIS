@@ -71,10 +71,26 @@
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -127,22 +143,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.label44 = new System.Windows.Forms.Label();
-            this.textBox27 = new System.Windows.Forms.TextBox();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -589,6 +590,84 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "合同";
             // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label54.ForeColor = System.Drawing.Color.Black;
+            this.label54.Location = new System.Drawing.Point(37, 576);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(399, 14);
+            this.label54.TabIndex = 48;
+            this.label54.Text = "输出信息位于当前目录\"桥隧项目管理系统导入模板-导出.xlsx\"";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label53.ForeColor = System.Drawing.Color.Black;
+            this.label53.Location = new System.Drawing.Point(37, 549);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(259, 14);
+            this.label53.TabIndex = 47;
+            this.label53.Text = "基于单位模板的合同自动识别成功率较高";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(264, 435);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(125, 12);
+            this.label51.TabIndex = 46;
+            this.label51.Text = "该项暂不支持自动识别";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(558, 397);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(125, 12);
+            this.label50.TabIndex = 45;
+            this.label50.Text = "该项暂不支持自动识别";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(397, 352);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(125, 12);
+            this.label49.TabIndex = 44;
+            this.label49.Text = "该项暂不支持自动识别";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(243, 282);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(59, 12);
+            this.label48.TabIndex = 43;
+            this.label48.Text = "无则填写/";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(292, 313);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(59, 12);
+            this.label47.TabIndex = 42;
+            this.label47.Text = "无则填写/";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label45.Location = new System.Drawing.Point(723, 391);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(288, 128);
+            this.label45.TabIndex = 41;
+            this.label45.Text = "使用说明：\r\n1、复制合同word文件到\"合同\"文件夹中\r\n2、点击\"读取所有合同word文件\"\r\n3、选择合同文件\r\n4、点击\"智能读取word\"\r\n5、修改识" +
+    "别不准确的结果\r\n6、添加其它不能识别的信息\r\n7、点击\"写入excel\"";
+            // 
             // label39
             // 
             this.label39.AutoSize = true;
@@ -654,6 +733,74 @@
             this.tabPage2.Size = new System.Drawing.Size(1032, 649);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "项目-桥梁";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(29, 189);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(341, 12);
+            this.label52.TabIndex = 43;
+            this.label52.Text = "桥长、桥宽等信息暂不支持自动识别，系统已有该桥则无须录入";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label46.Location = new System.Drawing.Point(693, 380);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(256, 144);
+            this.label46.TabIndex = 42;
+            this.label46.Text = "使用说明：\r\n1、复制报告word文件到\"项目\"目录\r\n2、点击\"读取所有报告word文件\"\r\n3、选择报告文件\r\n4、点击\"智能读取word\"\r\n5、修改识别不" +
+    "准确的结果\r\n6、添加其它不能识别的信息\r\n7、点击\"桥梁信息写入excel\"\r\n8、点击\"项目信息写入excel\"";
+            // 
+            // textBox27
+            // 
+            this.textBox27.Location = new System.Drawing.Point(85, 153);
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new System.Drawing.Size(127, 21);
+            this.textBox27.TabIndex = 26;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(26, 159);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(53, 12);
+            this.label44.TabIndex = 25;
+            this.label44.Text = "地理位置";
+            // 
+            // textBox19
+            // 
+            this.textBox19.Location = new System.Drawing.Point(303, 153);
+            this.textBox19.Name = "textBox19";
+            this.textBox19.Size = new System.Drawing.Size(216, 21);
+            this.textBox19.TabIndex = 24;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(219, 156);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(89, 12);
+            this.label43.TabIndex = 23;
+            this.label43.Text = "备注（桥梁）：";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(457, 129);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(62, 21);
+            this.textBox9.TabIndex = 22;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(375, 132);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(83, 12);
+            this.label42.TabIndex = 21;
+            this.label42.Text = "最大主跨（m）";
             // 
             // label41
             // 
@@ -1147,11 +1294,11 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(30, 701);
+            this.label36.Location = new System.Drawing.Point(24, 701);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(161, 12);
+            this.label36.Size = new System.Drawing.Size(167, 12);
             this.label36.TabIndex = 39;
-            this.label36.Text = "桥隧项目信息识别系统：v0.1";
+            this.label36.Text = "桥隧项目信息识别系统：v 0.1";
             // 
             // label37
             // 
@@ -1162,155 +1309,20 @@
             this.label37.TabIndex = 40;
             this.label37.Text = "CopyRight 2018 - 福建省建筑科学研究院 - 福建省建筑工程质量检测中心有限公司    系统维护:林迪南";
             // 
-            // label42
+            // button11
             // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(375, 132);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(83, 12);
-            this.label42.TabIndex = 21;
-            this.label42.Text = "最大主跨（m）";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(457, 129);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(62, 21);
-            this.textBox9.TabIndex = 22;
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(219, 156);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(89, 12);
-            this.label43.TabIndex = 23;
-            this.label43.Text = "备注（桥梁）：";
-            // 
-            // textBox19
-            // 
-            this.textBox19.Location = new System.Drawing.Point(303, 153);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(216, 21);
-            this.textBox19.TabIndex = 24;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(26, 159);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(53, 12);
-            this.label44.TabIndex = 25;
-            this.label44.Text = "地理位置";
-            // 
-            // textBox27
-            // 
-            this.textBox27.Location = new System.Drawing.Point(85, 153);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(127, 21);
-            this.textBox27.TabIndex = 26;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label45.Location = new System.Drawing.Point(723, 391);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(288, 128);
-            this.label45.TabIndex = 41;
-            this.label45.Text = "使用说明：\r\n1、复制合同word文件到\"合同\"文件夹中\r\n2、点击\"读取所有合同word文件\"\r\n3、选择合同文件\r\n4、点击\"智能读取word\"\r\n5、修改识" +
-    "别不准确的结果\r\n6、添加其它不能识别的信息\r\n7、点击\"写入excel\"";
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label46.Location = new System.Drawing.Point(693, 380);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(256, 144);
-            this.label46.TabIndex = 42;
-            this.label46.Text = "使用说明：\r\n1、复制报告word文件到\"项目\"目录\r\n2、点击\"读取所有报告word文件\"\r\n3、选择报告文件\r\n4、点击\"智能读取word\"\r\n5、修改识别不" +
-    "准确的结果\r\n6、添加其它不能识别的信息\r\n7、点击\"桥梁信息写入excel\"\r\n8、点击\"项目信息写入excel\"";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(292, 313);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(59, 12);
-            this.label47.TabIndex = 42;
-            this.label47.Text = "无则填写/";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(243, 282);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(59, 12);
-            this.label48.TabIndex = 43;
-            this.label48.Text = "无则填写/";
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(397, 352);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(125, 12);
-            this.label49.TabIndex = 44;
-            this.label49.Text = "该项暂不支持自动识别";
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(558, 397);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(125, 12);
-            this.label50.TabIndex = 45;
-            this.label50.Text = "该项暂不支持自动识别";
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(264, 435);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(125, 12);
-            this.label51.TabIndex = 46;
-            this.label51.Text = "该项暂不支持自动识别";
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(29, 189);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(341, 12);
-            this.label52.TabIndex = 43;
-            this.label52.Text = "桥长、桥宽等信息暂不支持自动识别，系统已有该桥则无须录入";
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label53.ForeColor = System.Drawing.Color.Black;
-            this.label53.Location = new System.Drawing.Point(37, 549);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(259, 14);
-            this.label53.TabIndex = 47;
-            this.label53.Text = "基于单位模板的合同自动识别成功率较高";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label54.ForeColor = System.Drawing.Color.Black;
-            this.label54.Location = new System.Drawing.Point(37, 576);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(399, 14);
-            this.label54.TabIndex = 48;
-            this.label54.Text = "输出信息位于当前目录\"桥隧项目管理系统导入模板-导出.xlsx\"";
+            this.button11.Location = new System.Drawing.Point(843, 696);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 41;
+            this.button11.Text = "检查更新";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1101, 731);
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.label37);
             this.Controls.Add(this.label36);
             this.Controls.Add(this.tabControl1);
@@ -1452,6 +1464,7 @@
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Button button11;
     }
 }
 
