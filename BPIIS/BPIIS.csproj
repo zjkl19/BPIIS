@@ -131,6 +131,9 @@
     </Compile>
     <None Include="合同\合同--后屿路桥检测.doc" />
     <None Include="合同\连江巡查加定检合同.doc" />
+    <Content Include="桥隧项目管理系统导入模板-空白.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="项目\尤溪光林中桥 报告 1223 - 林03.Doc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -154,8 +157,13 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="说明.txt" />
-    <Content Include="项目\a.txt">
+    <Content Include="合同\合同word放此目录.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="说明.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="项目\报告word放此目录.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
