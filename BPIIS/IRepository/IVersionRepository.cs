@@ -9,6 +9,6 @@ namespace BPIIS.IRepository
     public interface IVersionRepository
     {
         //获取版本号
-        string GetVersion();
+        Task<string> GetVersionAsync();
     }
 }

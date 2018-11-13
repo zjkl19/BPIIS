@@ -13,6 +13,7 @@ namespace BPIIS.Infrastructure
         {
             Bind<IContractRepository>().To<ContractRepository>();
             Bind<IProjectRepository>().To<ProjectRepository>();
+            Bind<IVersionRepository>().To<VersionRepository>();
         }
     }
 }

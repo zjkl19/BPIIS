@@ -5,7 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+
 using System.Text;
+
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Aspose.Words;
@@ -27,6 +30,7 @@ namespace BPIIS
         IKernel kernel;
         IContractRepository contractRepository;
         IProjectRepository projectRepository;
+        IVersionRepository versionRepository;
 
         BindingList<BridgeInspection> myGridView = new BindingList<BridgeInspection>();
         BindingSource mBbindingSource = new BindingSource();
@@ -179,6 +183,7 @@ namespace BPIIS
             kernel = new StandardKernel(new Infrastructure.NinjectDependencyResolver());
             contractRepository = kernel.Get<IContractRepository>();
             projectRepository = kernel.Get<IProjectRepository>();
+            versionRepository = kernel.Get<IVersionRepository>();
             dataGridView1_Load();
         }
 
@@ -240,7 +245,7 @@ namespace BPIIS
 
             string rootPath = Directory.GetCurrentDirectory();
 
-            Aspose.Words.Document doc = new Document($"{rootPath}\\合同\\{fileName}");
+            Document doc = new Document($"{rootPath}\\合同\\{fileName}");
 
             string originalWholeText = doc.Range.Text;    //原始全文
 
@@ -278,7 +283,6 @@ namespace BPIIS
 
             textBox10.Text = contractRepository.GetDeadline(wholeText);
 
-            //MessageBox.Show(cbfbm);
         }
 
         //将项目信息写入excel
@@ -790,50 +794,54 @@ namespace BPIIS
         }
 
         //检查更新
-        private void button11_Click(object sender, EventArgs e)
+        private async void button11_Click(object sender, EventArgs e)
         {
-            try
-            {
-                WebClient MyWebClient = new WebClient();
-                MyWebClient.Credentials = CredentialCache.DefaultCredentials;//获取或设置用于向Internet资源的请求进行身份验证的网络凭据
+            string r = await versionRepository.GetVersionAsync();
+            MessageBox.Show(r);
+            //try
+            //{
+            //    WebClient MyWebClient = new WebClient();
+            //    MyWebClient.Credentials = CredentialCache.DefaultCredentials;//获取或设置用于向Internet资源的请求进行身份验证的网络凭据
 
-                //软件版本信息
-                Byte[] pageData = MyWebClient.DownloadData("http://192.168.12.11:8300/BPIISUpdate.txt"); //从指定网站下载数据
+            //    //软件版本信息
+            //    Byte[] pageData = MyWebClient.DownloadData("http://192.168.12.11:8300/BPIISUpdate.txt"); //从指定网站下载数据
 
-                string pageHtml = Encoding.Default.GetString(pageData);  //如果获取网站页面采用的是GB2312，则使用这句            
+            //    string pageHtml = Encoding.Default.GetString(pageData);  //如果获取网站页面采用的是GB2312，则使用这句            
 
-                //string pageHtml = Encoding.UTF8.GetString(pageData); //如果获取网站页面采用的是UTF-8，则使用这句
+            //    //string pageHtml = Encoding.UTF8.GetString(pageData); //如果获取网站页面采用的是UTF-8，则使用这句
 
-                Byte[] ipPageData = MyWebClient.DownloadData("http://ip.tool.chinaz.com/");
-                string ipPageHtml = Encoding.UTF8.GetString(ipPageData);
+            //    Byte[] ipPageData = MyWebClient.DownloadData("http://ip.tool.chinaz.com/");
+            //    string ipPageHtml = Encoding.UTF8.GetString(ipPageData);
 
-                var result = string.Empty;
-                var regex = new Regex(@"(?<=<dd class=""fz24"">)([\s\S]+?)(?=</dd>)");
-                try
-                {
-                    var Match = regex.Matches(ipPageHtml);
-                    result = Match[0].Value;
+            //    var result = string.Empty;
+            //    var regex = new Regex(@"(?<=<dd class=""fz24"">)([\s\S]+?)(?=</dd>)");
+            //    try
+            //    {
+            //        var Match = regex.Matches(ipPageHtml);
+            //        result = Match[0].Value;
 
-                }
-                catch (Exception)
-                {
-                    result = "未找到";
-                }
+            //    }
+            //    catch (Exception)
+            //    {
+            //        result = "未找到";
+            //    }
 
-                MessageBox.Show(result);
+            //    MessageBox.Show(result);
 
-                //写入文本测试
-                //using (StreamWriter sw = new StreamWriter("c:\\test\\ouput.html"))//将获取的内容写入文本
-                //{
-                //    sw.Write(pageHtml);
-                //}
+            //    //写入文本测试
+            //    //using (StreamWriter sw = new StreamWriter("c:\\test\\ouput.html"))//将获取的内容写入文本
+            //    //{
+            //    //    sw.Write(pageHtml);
+            //    //}
 
-            }
-            catch (WebException webEx)
-            {
-                MessageBox.Show(webEx.Message.ToString());
-            }
+            //}
+            //catch (WebException webEx)
+            //{
+            //    MessageBox.Show(webEx.Message.ToString());
+            //}
         }
+
+
     }
 
 

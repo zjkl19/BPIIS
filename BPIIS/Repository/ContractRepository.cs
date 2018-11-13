@@ -9,7 +9,7 @@ namespace BPIIS.Repository
 {
     public class ContractRepository : IContractRepository
     {
-        private string result = "";
+        private string result = "未找到";
         private string resultContext = "";
         private MatchCollection Match;
         private Regex regex;
@@ -66,7 +66,7 @@ namespace BPIIS.Repository
         public  string GetAmount(string wholeText)
         {
             //壹贰叁肆伍陆柒捌玖拾佰仟
-            regex = new Regex(@"[1-9]{1}[0-9]{3,7}(?=.{1,30}元整)");
+            regex = new Regex(@"[1-9]{1}[0-9]{3,7}(?=.{1,30}元整)|(?<=元整.{1,30})[1-9]{1}[0-9]{3,7}");
 
             //regex = new Regex(@"[\s\S]{30}元整[\s\S]{30}");
 
@@ -96,35 +96,12 @@ namespace BPIIS.Repository
 
         }
 
-        public string GetProjectLocation(string wholeText)
-        {
-            regex = new Regex(@"(?<=技术服务地点：)(.*?)\r|(?<=工程地点：)(.*?)\r");
-
-            try
-            {
-                Match = regex.Matches(wholeText);
-                result = Match[0].Value;
-
-                //regex = new Regex(@"[\u4e00-\u9fa5]+");
-                //Match = regex.Matches(result);
-                //result = Match[0].Value;
-
-                result = SpecialStrReplaceAndTrim(result);
-            }
-            catch (Exception)
-            {
-                result = "未找到";
-            }
-
-            return result;
-        }
-
         public string GetSignedDate(string wholeText)
         {
             //分离出的年月日
 
             regex = new Regex(@"(?<=签订时间：)(.*?)\r|(?<=签订日期：)(.*?)\r");
-           
+
             try
             {
                 Match = regex.Matches(wholeText);
@@ -141,6 +118,48 @@ namespace BPIIS.Repository
             }
             return result;
         }
+        public string GetDeadline(string wholeText)
+        {
+            regex = new Regex(@"(?<=技术服务期限：).*?\r");
+
+            try
+            {
+                Match = regex.Matches(wholeText);
+                result = Match[0].Value;
+                result = SpecialStrReplaceAndTrim(result);
+            }
+            catch (Exception)
+            {
+                result = "未找到";
+            }
+
+            return result;
+        }
+
+
+        public string GetProjectLocation(string wholeText)
+        {
+            regex = new Regex(@"(?<=技术服务地点：)(.*?)\r|(?<=工程地点：)(.*?)\r");
+
+            try
+            {
+                Match = regex.Matches(wholeText);
+                result = Match[0].Value;
+
+                //regex = new Regex(@"[\u4e00-\u9fa5]+");
+                //Match = regex.Matches(result);
+                //result = Match[0].Value;
+
+                result = SpecialStrReplaceAndTrim(result);
+                result = RemovePunctuaction(result);
+            }
+            catch (Exception)
+            {
+                result = "未找到";
+            }
+
+            return result;
+        }     
 
         public string GetJobContent(string wholeText)
         {
@@ -181,7 +200,7 @@ namespace BPIIS.Repository
         public string GetClientContactPerson(string wholeText)
         {
             regex = new Regex(@"(?<=委托方（甲方）：([\s\S]*)项目联系人：).*?\r(?=([\s\S]*)受托方（乙方）：)");
-
+            
             try
             {
                 Match = regex.Matches(wholeText);
@@ -199,8 +218,8 @@ namespace BPIIS.Repository
 
         public string GetClientContactPersonPhone(string wholeText)
         {
-            regex = new Regex(@"(?<=委托方（甲方）：([\s\S]*)联系方式：)([0-9]{11})\r(?=([\s\S]*)受托方（乙方）：)");
-
+            //regex = new Regex(@"(?<=委托方（甲方）：([\s\S]*)联系方式：)([0-9]{11})\r(?=([\s\S]*)受托方（乙方）：)");
+            regex = new Regex(@"(?<=联系方式：).*?\r|(?<=联系方式 ：).*?\r");
             try
             {
                 Match = regex.Matches(wholeText);
@@ -216,24 +235,7 @@ namespace BPIIS.Repository
             return result;
         }
 
-        public string GetDeadline(string wholeText)
-        {
-            regex = new Regex(@"(?<=技术服务期限：).*?\r");
-
-            try
-            {
-                Match = regex.Matches(wholeText);
-                result = Match[0].Value;
-                result = SpecialStrReplaceAndTrim(result);
-            }
-            catch (Exception)
-            {
-                result = "未找到";
-            }
-
-            return result;
-        }
-
+        
         private string SpecialStrReplace(string strIn)
         {
             string strOut = null;
@@ -247,6 +249,15 @@ namespace BPIIS.Repository
             string strOut = null;
             strOut = SpecialStrReplace(strIn);
             strOut=strOut.Replace(" ","");
+            return strOut;
+        }
+
+        private string RemovePunctuaction(string strIn)
+        {
+            string strOut = null;
+            strOut = strIn.Replace("。", "");
+            strOut = strOut.Replace(";", "");
+            strOut = strOut.Replace("；", "");
             return strOut;
         }
     }

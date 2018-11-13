@@ -65,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repository\ContractRepositoryTests.cs" />
     <Compile Include="Repository\ProjectRepositoryTests.cs" />
     <Compile Include="TestClass.cs" />
     <Compile Include="UnitTest1.cs" />
